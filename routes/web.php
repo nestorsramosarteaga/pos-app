@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\CategoriaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +18,18 @@ Route::get('/', function () {
     return view('template');
 });
 
+Route::view('/panel', 'panel.index')->name('panel');
+// Route::view('/categorias', 'categoria.index')->name('categorias');
+
+Route::resource('categorias',CategoriaController::class);
+
+
 Route::get('/login', function () {
     return view('auth.login');
 });
+
+
+
 
 Route::get('/401', function () {
     return view('pages.401');
@@ -32,3 +42,6 @@ Route::get('/404', function () {
 Route::get('/500', function () {
     return view('pages.500');
 });
+
+// Route::get('/lang',[LanguageController::class, 'change'])->name('user.lang');
+
