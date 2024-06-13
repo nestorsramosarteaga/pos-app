@@ -6,7 +6,6 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
 @endpush
 
-    
 @section('content')
 <div class="container-fluid px-4">
     <h1 class="mt-4">{{ __('messages.menus.categories') }}</h1>
@@ -18,9 +17,9 @@
     <div class="mb-4">
         <a href="{{ route('categorias.create') }}">
             <button type="button" class="btn btn-primary">{{ __('messages.buttons.add_new_record') }}</button>
-        </a>    
-    </div>    
-    
+        </a>
+    </div>
+
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
@@ -54,7 +53,7 @@
                         <td>63</td>
                         <td>2011/07/25</td>
                         <td>$170,750</td>
-                    </tr>                    
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -66,4 +65,27 @@
 @push('js')
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
     <script src="{{ asset('js/datatables-simple-demo.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if(session('success'))
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+
+        Toast.fire({
+            icon: "success",
+            title: "{{ __('messages.forms.results.success') }}"
+        });
+    </script>
+    @endif
+
 @endpush

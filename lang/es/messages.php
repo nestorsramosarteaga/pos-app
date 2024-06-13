@@ -1,14 +1,14 @@
 <?php
 
 return [
-    'brand' => 'Sistema Ventas',    
+    'brand' => 'Sistema Ventas',
     'welcome' => 'Bienvenido',
     'menus' => [
         'core' => 'Inicio',
         'dashboard' => 'Panel',
         'settings' => 'Configuraciones',
         'activity_log' => 'Registro de actividades',
-        'logout' => 'Cerrar Sesion',    
+        'logout' => 'Cerrar Sesion',
         'layouts' => 'Layouts',
         'pages' => 'Paginas',
         'modules' => 'Modulos',
@@ -19,6 +19,7 @@ return [
     'categories' => [
         'table' => 'Tabla Categorias',
         'create' => 'Crear Categoria',
+        'created_success' => 'Categoria creada exitosamente',
     ],
     'buttons' => [
         'search' => 'Buscar...',
@@ -29,6 +30,9 @@ return [
         'fields' => [
             'name' => 'Nombre',
             'description' => 'Descripcion',
+        ],
+        'results'   => [
+            'success' => 'Operacion exitosa',
         ],
     ],
 ];

@@ -9,6 +9,8 @@ class Categoria extends Model
 {
     use HasFactory;
 
+    protected $fillable = [ 'caracteristica_id' ];
+
     public function productos(){
         return $this->belongsToMany(Producto::class)->withTimestamps();
     }

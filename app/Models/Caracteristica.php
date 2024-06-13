@@ -9,6 +9,8 @@ class Caracteristica extends Model
 {
     use HasFactory;
 
+    protected $fillable = [ 'nombre', 'descripcion' ];
+
     public function categoria(){
         return $this->hasOne(Categoria::class);
     }
@@ -20,5 +22,5 @@ class Caracteristica extends Model
     public function presentacione(){
         return $this->hasOne(Presentacione::class);
     }
-    
+
 }

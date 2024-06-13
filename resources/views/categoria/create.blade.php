@@ -6,7 +6,6 @@
 
 @endpush
 
-    
 @section('content')
 <div class="container-fluid px-4">
     <h1 class="mt-4">{{ __('messages.categories.create') }}</h1>
@@ -23,11 +22,17 @@
             <div class="row g-3">
                 <div class="col-md-6">
                     <label for="nombre" class="form-label">{{ __('messages.forms.fields.name') }}</label>
-                    <input type="text" name="nombre" id="nombre" class="form-control" />
+                    <input type="text" name="nombre" id="nombre" class="form-control" value=""/>
+                    @error('nombre')
+                        <small class="text-danger">{{'*' . $message}}</small>
+                    @enderror
                 </div>
                 <div class="col-md-12">
                     <label for="nombre" class="form-label">{{ __('messages.forms.fields.description') }}</label>
-                    <textarea name="description" id="description" rows="3" class="form-control textarea-fixed"></textarea>
+                    <textarea name="descripcion" id="descripcion" rows="3" class="form-control textarea-fixed">{{old('descripcion')}}</textarea>
+                    @error('descripcion')
+                        <small class="text-danger">{{'*' . $message}}</small>
+                    @enderror
                 </div>
                 <div class="col-12">
                     <button class="btn btn-primary" type="submit">{{ __('messages.buttons.save') }}</button>

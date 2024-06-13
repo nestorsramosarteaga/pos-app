@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Caracteristica;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreCategoriaRequest;
 
 class CategoriaController extends Controller
@@ -28,7 +30,18 @@ class CategoriaController extends Controller
      */
     public function store(StoreCategoriaRequest $request)
     {
-        dd($request);
+        try{
+            DB::beginTransaction();
+            $caracteristica = Caracteristica::create($request->validated());
+            $caracteristica->categoria()->create([
+                'caracteristica_id' => $caracteristica->id
+            ]);
+            DB::commit();
+        }catch(\Exception $e){
+            DB::rollBack();
+        }
+
+        return redirect()->route('categorias.index')->with('success', __('messages.categories.created_success'));
     }
 
     /**
