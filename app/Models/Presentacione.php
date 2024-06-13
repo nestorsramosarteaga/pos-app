@@ -9,7 +9,7 @@ class Presentacione extends Model
 {
     use HasFactory;
 
-    public fucntion productos(){
+    public function productos(){
         return $this->hasMany(Producto::class);
     }
 

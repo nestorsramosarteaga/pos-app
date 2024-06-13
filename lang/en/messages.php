@@ -16,9 +16,10 @@ return [
         'table' => 'Table',
         'brands' => 'Brands',
     ],
-    'categories' => [          
+    'categories' => [
         'table' => 'DataTable Categories',
         'create' => 'Create Category',
+        'created_success' => 'Category successfully created',
     ],
     'buttons' => [
         'search' => 'Search...',
@@ -29,6 +30,9 @@ return [
         'fields' => [
             'name' => 'Name',
             'description' => 'Description',
+        ],
+        'results'   => [
+            'success' => 'successfully saved',
         ],
     ],
 ];
