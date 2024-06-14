@@ -1,0 +1,11 @@
+{
+    "labels": {
+        "placeholder": "Search...",
+        "searchTitle": "Search within table",
+        "pageTitle": "Page {page}",
+        "perPage": "entries per page",
+        "noRows": "No entries found",
+        "info": "Showing {start} to {end} of {rows} entries",
+        "noResults": "No results match your search query"
+    }
+}

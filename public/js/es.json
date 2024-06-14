@@ -1,0 +1,11 @@
+{
+    "labels": {
+        "placeholder": "Buscar...",
+        "searchTitle": "Buscar en la tabla",
+        "pageTitle": "Página {page}",
+        "perPage": "entradas por página",
+        "noRows": "No se encontraron entradas",
+        "info": "Mostrando {start} a {end} de {rows} entradas",
+        "noResults": "No hay resultados que coincidan con su consulta de búsqueda"
+    }
+}

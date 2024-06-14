@@ -24,3 +24,46 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+
+// Obtener el idioma de la página
+let lang = document.documentElement.lang || 'en'; // Si no hay lang, se asume 'en'
+
+const langJson = {
+    es: 'js/es.json',
+    en: 'js/en.json',
+    fr: 'js/fr.json'
+};
+
+async function loadTranslations(lang) {
+    try {
+        let response = await fetch(langJson[lang]);
+        if (!response.ok) {
+            throw new Error(`Error al cargar el archivo de traducción para el idioma: ${lang}`);
+        }
+        let data = await response.json();
+        console.log(`Traducciones cargadas para el idioma: ${lang}`);
+        console.log(data);
+        return data;
+    } catch (error) {
+        console.error('Error al cargar las traducciones:', error);
+        return null;
+    }
+}
+
+async function initializeDataTable(datatablesSimple) {
+    let translations = await loadTranslations(lang);
+    let options = {};
+
+    if (translations) {
+        options = {
+            labels: translations.labels
+        };
+    }
+
+    if (datatablesSimple) {
+        new simpleDatatables.DataTable(datatablesSimple, options);
+    }
+}
+
+
+
