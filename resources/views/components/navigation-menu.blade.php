@@ -55,9 +55,13 @@
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-tag"></i></div>
                     {{ __('messages.menus.categories') }}
                 </a>
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('marcas.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     {{ __('messages.menus.brands') }}
+                </a>
+                <a class="nav-link" href="{{ route('marcas.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                    {{ __('messages.menus.presentations') }}
                 </a>
             </div>
         </div>

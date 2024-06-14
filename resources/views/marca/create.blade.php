@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', __('messages.categories.create'))
+@section('title', __('messages.brands.create'))
 
 @push('css')
 
@@ -8,11 +8,11 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">{{ __('messages.categories.create') }}</h1>
+    <h1 class="mt-4">{{ __('messages.brands.create') }}</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="{{ route('panel') }}">{{ __('messages.menus.core') }}</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('categorias.index') }}">{{ __('messages.menus.categories') }}</a></li>
-        <li class="breadcrumb-item active">{{ __('messages.categories.create') }}</li>
+        <li class="breadcrumb-item"><a href="{{ route('marcas.index') }}">{{ __('messages.menus.brands') }}</a></li>
+        <li class="breadcrumb-item active">{{ __('messages.brands.create') }}</li>
     </ol>
 
     <!-- Add Form -->
@@ -22,7 +22,7 @@
                 {{ session('error') }}
             </div>
         @endif
-        <form action="{{ route('categorias.store') }}" method="post">
+        <form action="{{ route('marcas.store') }}" method="post">
             @csrf
             <div class="row g-3">
                 <div class="col-md-6">
