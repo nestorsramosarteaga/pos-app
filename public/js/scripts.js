@@ -42,7 +42,6 @@ async function loadTranslations(lang) {
         }
         let data = await response.json();
         console.log(`Traducciones cargadas para el idioma: ${lang}`);
-        console.log(data);
         return data;
     } catch (error) {
         console.error('Error al cargar las traducciones:', error);

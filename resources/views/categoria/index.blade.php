@@ -29,31 +29,67 @@
             <table id="datatablesSimple" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>{{ __('messages.forms.fields.name') }}</th>
+                        <th>{{ __('messages.forms.fields.description') }}</th>
+                        <th>{{ __('messages.columns.status') }}</th>
+                        <th>{{ __('messages.columns.actions') }}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
-                    </tr>
-                    <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td>2011/07/25</td>
-                        <td>$170,750</td>
-                    </tr>
+                    @foreach($categorias as $categoria)
+                        <tr>
+                            <td>
+                                {{ $categoria->caracteristica->nombre }}
+                            </td>
+                            <td>
+                                {{ $categoria->caracteristica->descripcion }}
+                            </td>
+                            <td>
+                                @if ( $categoria->caracteristica->estado == 1 )
+                                    <span class="fw-bolder p-1 rounded bg-success text-white">{{ __('messages.status.active') }}</span>
+                                @else
+                                    <span class="fw-bolder p-1 rounded bg-danger text-white">{{ __('messages.status.deleted') }}</span>
+                                @endif
+                            </td>
+                            <td class="text-center">
+                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                    <form action="{{route('categorias.edit',['categoria'=>$categoria])}}" method="get">
+                                        <button type="submit" class="btn btn-warning">{{ __('messages.buttons.edit') }}</button>
+                                    </form>
+                                    @if($categoria->caracteristica->estado == 1)
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$categoria->id}}">{{ __('messages.buttons.delete') }}</button>
+                                    @else
+                                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$categoria->id}}">{{ __('messages.buttons.restore') }}</button>
+                                    @endif
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="confirmModal-{{$categoria->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="confirmModalLabel">{{ __('messages.modals.confirmation_message') }}</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    {{ $categoria->caracteristica->estado == 1 ? __('messages.modals.confirmation_message_delete_category') : __('messages.modals.confirmation_message_restore_category') }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('messages.buttons.close') }}</button>
+
+                                    <form action="{{ route('categorias.destroy',['categoria'=>$categoria->id]) }}" method="post">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger">{{ __('messages.buttons.confirm') }}</button>
+                                    </form>
+
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -69,6 +105,7 @@
 
     @if(session('success'))
     <script>
+        let message = "{{ session('success') }}"
         const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -83,7 +120,7 @@
 
         Toast.fire({
             icon: "success",
-            title: "{{ __('messages.forms.results.success') }}"
+            title: message
         });
     </script>
     @endif
