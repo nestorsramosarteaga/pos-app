@@ -3,20 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\Caracteristica;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreCategoriaRequest;
 use App\Http\Requests\UpdateCategoriaRequest;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 
 class CategoriaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index() :View
     {
         $categorias = Categoria::with('caracteristica')->latest()->get();
         return view('categoria.index', ['categorias' => $categorias]);
@@ -42,11 +43,14 @@ class CategoriaController extends Controller
                 'caracteristica_id' => $caracteristica->id
             ]);
             DB::commit();
+
+            return redirect()->route('categorias.index')->with('success', __('messages.categories.created_success'));
         }catch(\Exception $e){
             DB::rollBack();
+            Log::error('Error creating brand: ' . $e->getMessage());
+            // Redirect back with an error message
+            return back()->with('error', __('messages.brands.create_error'));
         }
-
-        return redirect()->route('categorias.index')->with('success', __('messages.categories.created_success'));
     }
 
     /**
@@ -79,7 +83,7 @@ class CategoriaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id) :RedirectResponse
     {
         $categoria = Categoria::find($id);
 
