@@ -82,10 +82,10 @@ class CategoriaController extends Controller
     public function destroy(string $id)
     {
         $categoria = Categoria::find($id);
-        
+
         $nuevoEstado = $categoria->caracteristica->estado == 1 ? 0 : 1;
 
-        $message = $categoria->caracteristica->estado == 1 
+        $mensaje = $categoria->caracteristica->estado == 1 
             ? __('messages.categories.deleted_success') 
             : __('messages.categories.restored_success');
 
@@ -94,6 +94,6 @@ class CategoriaController extends Controller
             'estado' => $nuevoEstado
         ]);
 
-        return redirect()->route('categorias.index')->with('success', $message );
+        return redirect()->route('categorias.index')->with('success', $mensaje );
     }
 }
