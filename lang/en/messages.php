@@ -2,7 +2,7 @@
 
 return [
     'brand' => 'POS',
-    'welcome' => 'Welcome',    
+    'welcome' => 'Welcome',
     'menus' => [
         'core' => 'Core',
         'dashboard' => 'Dashboard',
@@ -15,15 +15,37 @@ return [
         'categories' => 'Categories',
         'table' => 'Table',
         'brands' => 'Brands',
+        'presentations' => 'Presentations',
     ],
     'categories' => [
         'table' => 'DataTable Categories',
         'create' => 'Create Category',
         'created_success' => 'Category successfully created',
+        'create_error' => 'The Category could not be created',
         'edit' => 'Edit Category',
         'updated_success' => 'Category successfully updated',
         'deleted_success' => 'Category successfully deleted',
         'restored_success' => 'Category successfully restored',
+    ],
+    'brands' => [
+        'table' => 'DataTable Brands',
+        'create' => 'Create Brand',
+        'created_success' => 'Brand successfully created',
+        'create_error' => 'The Brand could not be created',
+        'edit' => 'Edit Brand',
+        'updated_success' => 'Brand successfully updated',
+        'deleted_success' => 'Brand successfully deleted',
+        'restored_success' => 'Brand successfully restored',
+    ],
+    'presentations' => [
+        'table' => 'DataTable Presentations',
+        'create' => 'Create Presentation',
+        'created_success' => 'Presentation successfully created',
+        'create_error' => 'The Presentation could not be created',
+        'edit' => 'Edit Presentation',
+        'updated_success' => 'Presentation successfully updated',
+        'deleted_success' => 'Presentation successfully deleted',
+        'restored_success' => 'Presentation successfully restored',
     ],
     'buttons' => [
         'search' => 'Search...',
@@ -56,6 +78,10 @@ return [
         'confirmation_message' => 'Confirmation message',
         'confirmation_message_delete_category' => 'Are you sure you want to delete the category?',
         'confirmation_message_restore_category' => 'Are you sure you want to restore the category?',
+        'confirmation_message_delete_brand' => 'Are you sure you want to delete the brand?',
+        'confirmation_message_restore_brand' => 'Are you sure you want to restore the brand?',
+        'confirmation_message_delete_presentation' => 'Are you sure you want to delete the presentation?',
+        'confirmation_message_restore_presentation' => 'Are you sure you want to restore the presentation?',
     ],
     'status' => [
         'active' => 'Active',
