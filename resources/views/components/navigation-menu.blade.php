@@ -56,11 +56,11 @@
                     {{ __('messages.menus.categories') }}
                 </a>
                 <a class="nav-link" href="{{ route('marcas.index') }}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                    <div class="sb-nav-link-icon"><i class="fas fa-rainbow"></i></div>
                     {{ __('messages.menus.brands') }}
                 </a>
-                <a class="nav-link" href="{{ route('marcas.index') }}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                <a class="nav-link" href="{{ route('presentaciones.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-gifts"></i></div>
                     {{ __('messages.menus.presentations') }}
                 </a>
             </div>

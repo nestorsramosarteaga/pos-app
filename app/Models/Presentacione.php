@@ -9,6 +9,8 @@ class Presentacione extends Model
 {
     use HasFactory;
 
+    protected $fillable = [ 'caracteristica_id'];
+
     public function productos(){
         return $this->hasMany(Producto::class);
     }
