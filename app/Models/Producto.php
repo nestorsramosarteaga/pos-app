@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Producto extends Model
 {
@@ -36,7 +37,8 @@ class Producto extends Model
     public function handleUploadImage($image){
         $file = $image;
         $name = time() . $file->getClientOriginalName();
-        $file->move(public_path() . '/img/productos/' , $name);
+        // $file->move(public_path() . '/img/productos/' , $name);
+        Storage::putFileAs('productos', $file, $name, 'public'); // 'public/productos'
         return $name;
     }
 
