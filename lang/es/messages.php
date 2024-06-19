@@ -71,6 +71,7 @@ return [
         'understood' => 'Entendido',
         'confirm' => 'Confirmar',
         'restore' => 'Restaurar',
+        'view' => 'Ver',
     ],
     'forms' => [
         'fields' => [
@@ -88,6 +89,7 @@ return [
             'required' => [
                 'code' => 'El código es necesario',
             ],
+            'none' => 'No tiene',
         ],
         'results'   => [
             'success' => 'Operación exitosa',
@@ -104,7 +106,8 @@ return [
         'confirmation_message_delete_brand' => '¿Seguro que quieres eliminar la marca?',
         'confirmation_message_restore_brand' => '¿Seguro que quieres restaurar la marca?',
         'confirmation_message_delete_presentation' => '¿Seguro que quieres eliminar la presentación?',
-        'confirmation_message_restore_presentation' => '¿Seguro que quieres restaurar la presentación?'
+        'confirmation_message_restore_presentation' => '¿Seguro que quieres restaurar la presentación?',
+        'title_product_details' => 'Detalles del Producto',
     ],
     'status' => [
         'active' => 'Activo',

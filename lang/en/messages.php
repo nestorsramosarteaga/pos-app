@@ -71,6 +71,7 @@ return [
         'understood' => 'Understood',
         'confirm' => 'Confirm',
         'restore' => 'Restore',
+        'view' => 'Ver',
     ],
     'forms' => [
         'fields' => [
@@ -88,6 +89,8 @@ return [
             'required' => [
                 'code' => 'A code field is required',
             ],
+            'none' => 'None',
+            'stock' => 'Stock',
         ],
         'results'   => [
             'success' => 'successfully saved',
@@ -105,6 +108,7 @@ return [
         'confirmation_message_restore_brand' => 'Are you sure you want to restore the brand?',
         'confirmation_message_delete_presentation' => 'Are you sure you want to delete the presentation?',
         'confirmation_message_restore_presentation' => 'Are you sure you want to restore the presentation?',
+        'title_product_details' => 'Product Details',
     ],
     'status' => [
         'active' => 'Active',

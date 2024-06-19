@@ -20,8 +20,8 @@ class ProductoController extends Controller
      */
     public function index() :View
     {
-        $productos = Producto::latest()->get();
-        return view('producto.index', ['productos' => $productos]);
+        $productos = Producto::with(['marca.caracteristica','categorias.caracteristica','presentacione.caracteristica'])->latest()->get();
+        return view('producto.index', compact('productos'));
     }
 
     /**
