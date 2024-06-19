@@ -48,16 +48,12 @@
                                 <x-columna-estado :estado="$categoria->caracteristica->estado" />
                             </td>
                             <td class="text-center">
-                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    <form action="{{route('categorias.edit',['categoria'=>$categoria])}}" method="get">
-                                        <button type="submit" class="btn btn-warning">{{ __('messages.buttons.edit') }}</button>
-                                    </form>
-                                    @if($categoria->caracteristica->estado == 1)
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$categoria->id}}">{{ __('messages.buttons.delete') }}</button>
-                                    @else
-                                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$categoria->id}}">{{ __('messages.buttons.restore') }}</button>
-                                    @endif
-                                </div>
+                                <x-columna-acciones
+                                    :ruta="'categorias.edit'"
+                                    :estado="$categoria->caracteristica->estado"
+                                    :key="'categoria'"
+                                    :value="$categoria"
+                                />
                             </td>
                         </tr>
 

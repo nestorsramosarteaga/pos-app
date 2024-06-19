@@ -48,16 +48,12 @@
                                 <x-columna-estado :estado="$presentacione->caracteristica->estado" />
                             </td>
                             <td class="text-center">
-                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    <form action="{{route('presentaciones.edit',['presentacione'=>$presentacione])}}" method="get">
-                                        <button type="submit" class="btn btn-warning">{{ __('messages.buttons.edit') }}</button>
-                                    </form>
-                                    @if($presentacione->caracteristica->estado == 1)
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$presentacione->id}}">{{ __('messages.buttons.delete') }}</button>
-                                    @else
-                                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$presentacione->id}}">{{ __('messages.buttons.restore') }}</button>
-                                    @endif
-                                </div>
+                                <x-columna-acciones
+                                    :ruta="'presentaciones.edit'"
+                                    :estado="$presentacione->caracteristica->estado"
+                                    :key="'presentacione'"
+                                    :value="$presentacione"
+                                />
                             </td>
                         </tr>
 
