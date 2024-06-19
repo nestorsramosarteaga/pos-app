@@ -112,6 +112,8 @@ return [
         'confirmation_message_restore_brand' => 'Are you sure you want to restore the brand?',
         'confirmation_message_delete_presentation' => 'Are you sure you want to delete the presentation?',
         'confirmation_message_restore_presentation' => 'Are you sure you want to restore the presentation?',
+        'confirmation_message_delete_product' => 'Are you sure you want to delete the product?',
+        'confirmation_message_restore_product' => 'Are you sure you want to restore the product?',
         'title_product_details' => 'Product Details',
     ],
     'status' => [

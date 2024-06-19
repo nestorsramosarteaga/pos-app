@@ -186,6 +186,19 @@ class ProductoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $producto = Producto::find($id);
+
+        $nuevoEstado = $producto->estado == 1 ? 0 : 1;
+
+        $mensaje = $producto->estado == 1 
+            ? __('messages.products.deleted_success') 
+            : __('messages.products.restored_success');
+
+        Producto::where('id' , $producto->id)
+        ->update([
+            'estado' => $nuevoEstado
+        ]);
+
+        return redirect()->route('productos.index')->with('success', $mensaje);
     }
 }

@@ -108,6 +108,8 @@ return [
         'confirmation_message_restore_brand' => '¿Seguro que quieres restaurar la marca?',
         'confirmation_message_delete_presentation' => '¿Seguro que quieres eliminar la presentación?',
         'confirmation_message_restore_presentation' => '¿Seguro que quieres restaurar la presentación?',
+        'confirmation_message_delete_product' => '¿Seguro que quieres eliminar el producto?',
+        'confirmation_message_restore_product' => '¿Seguro que quieres restaurar el producto?',
         'title_product_details' => 'Detalles del Producto',
     ],
     'status' => [
