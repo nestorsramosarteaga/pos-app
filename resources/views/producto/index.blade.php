@@ -116,29 +116,13 @@
                     </div>
 
                     <!-- Confirm Modal -->
-                    <div class="modal fade" id="confirmModal-{{$item->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="confirmModalLabel">{{ __('messages.modals.confirmation_message') }}</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                {{ $item->estado == 1 ? __('messages.modals.confirmation_message_delete_product') : __('messages.modals.confirmation_message_restore_product') }}
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('messages.buttons.close') }}</button>
-
-                                <form action="{{ route('productos.destroy',['producto'=>$item->id]) }}" method="post">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button type="submit" class="btn btn-danger">{{ __('messages.buttons.confirm') }}</button>
-                                </form>
-
-                            </div>
-                        </div>
-                        </div>
-                    </div>
+                    <x-confirm-modal
+                        :ruta="'productos.destroy'"
+                        :estado="$item->estado"
+                        :key="'producto'"
+                        :id="$item->id"
+                        :type="'product'"
+                    />
                     @endforeach
                 </tbody>
             </table>
