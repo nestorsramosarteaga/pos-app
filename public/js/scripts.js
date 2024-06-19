@@ -64,5 +64,3 @@ async function initializeDataTable(datatablesSimple) {
     }
 }
 
-
-
