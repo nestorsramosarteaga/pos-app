@@ -47,9 +47,9 @@ class CategoriaController extends Controller
             return redirect()->route('categorias.index')->with('success', __('messages.categories.created_success'));
         }catch(\Exception $e){
             DB::rollBack();
-            Log::error('Error creating brand: ' . $e->getMessage());
+            Log::error('Error creating category: ' . $e->getMessage());
             // Redirect back with an error message
-            return back()->with('error', __('messages.brands.create_error'));
+            return back()->with('error', __('messages.category.create_error'));
         }
     }
 
@@ -74,10 +74,19 @@ class CategoriaController extends Controller
      */
     public function update(UpdateCategoriaRequest $request, Categoria $categoria) :RedirectResponse
     {
-        Caracteristica::where('id', $categoria->caracteristica->id)
-        ->update($request->validated());
+        try{
+            DB::beginTransaction();
+            Caracteristica::where('id', $categoria->caracteristica->id)
+                ->update($request->validated());
+            DB::commit();
 
-        return redirect()->route('categorias.index')->with('success', __('messages.categories.updated_success'));
+            return redirect()->route('categorias.index')->with('success', __('messages.categories.updated_success'));
+        }catch(\Exception $e){
+            DB::rollBack();
+            Log::error('Error updating category: ' . $e->getMessage());
+            // Redirect back with an error message
+            return back()->with('error', __('messages.categories.updated_error'));
+        }
     }
 
     /**

@@ -75,10 +75,19 @@ class PresentacionController extends Controller
      */
     public function update(UpdatePresentacionRequest $request, Presentacione $presentacione) :RedirectResponse
     {
-        Caracteristica::where('id', $presentacione->caracteristica->id)
-        ->update($request->validated());
+        try{
+            DB::beginTransaction();
+            Caracteristica::where('id', $presentacione->caracteristica->id)
+            ->update($request->validated());
+            DB::commit();
 
-        return redirect()->route('presentaciones.index')->with('success', __('messages.presentations.updated_success'));
+            return redirect()->route('presentaciones.index')->with('success', __('messages.presentations.updated_success'));
+        }catch(\Exception $e){
+            DB::rollBack();
+            Log::error('Error updating presentation: ' . $e->getMessage());
+            // Redirect back with an error message
+            return back()->with('error', __('messages.presentations.updated_error'));
+        }
     }
 
     /**

@@ -75,10 +75,19 @@ class MarcaController extends Controller
      */
     public function update(UpdateMarcaRequest $request, Marca $marca) :RedirectResponse
     {
-        Caracteristica::where('id', $marca->caracteristica->id)
-        ->update($request->validated());
+        try{
+            DB::beginTransaction();
+            Caracteristica::where('id', $marca->caracteristica->id)
+            ->update($request->validated());
+            DB::commit();
 
-        return redirect()->route('marcas.index')->with('success', __('messages.brands.updated_success'));
+            return redirect()->route('marcas.index')->with('success', __('messages.brands.updated_success'));
+        }catch(\Exception $e){
+            DB::rollBack();
+            Log::error('Error updating brand: ' . $e->getMessage());
+            // Redirect back with an error message
+            return back()->with('error', __('messages.brands.updated_error'));
+        }
     }
 
     /**
