@@ -72,3 +72,5 @@ https://getbootstrap.com/docs/5.3/getting-started/introduction/
 https://github.com/Laraveles/spanish
 https://github.com/fiduswriter/simple-datatables
 https://sweetalert2.github.io/
+https://github.com/snapappointments/bootstrap-select
+
