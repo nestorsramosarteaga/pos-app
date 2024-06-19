@@ -63,6 +63,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-gifts"></i></div>
                     {{ __('messages.menus.presentations') }}
                 </a>
+                <a class="nav-link" href="{{ route('productos.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fa-brands fa-shopify"></i></div>
+                    {{ __('messages.menus.products') }}
+                </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">
