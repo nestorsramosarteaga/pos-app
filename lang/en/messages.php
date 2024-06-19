@@ -16,6 +16,7 @@ return [
         'table' => 'Table',
         'brands' => 'Brands',
         'presentations' => 'Presentations',
+        'products' => 'Products',
     ],
     'categories' => [
         'table' => 'DataTable Categories',
@@ -47,6 +48,16 @@ return [
         'deleted_success' => 'Presentation successfully deleted',
         'restored_success' => 'Presentation successfully restored',
     ],
+    'products' => [
+        'table' => 'DataTable Products',
+        'create' => 'Create Product',
+        'created_success' => 'Product successfully created',
+        'create_error' => 'The Product could not be created',
+        'edit' => 'Edit Product',
+        'updated_success' => 'Product successfully updated',
+        'deleted_smarca_iduccess' => 'Product successfully deleted',
+        'restored_success' => 'Product successfully restored',
+    ],
     'buttons' => [
         'search' => 'Search...',
         'add_new_record' => 'Add new record',
@@ -65,6 +76,18 @@ return [
         'fields' => [
             'name' => 'Name',
             'description' => 'Description',
+            'code' => 'Code',
+            'expiry_date' => 'Expiry date',
+            'img_path' => 'Image',
+            'brand' => 'Brand',
+            'presentation' => 'Presentation',
+            'option' => [
+                'select_one' => 'Please select one option',
+            ],
+            'categories' => 'Categories',
+            'required' => [
+                'code' => 'A code field is required',
+            ],
         ],
         'results'   => [
             'success' => 'successfully saved',

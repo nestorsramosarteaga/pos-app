@@ -16,6 +16,7 @@ return [
         'table' => 'Tabla',
         'brands' => 'Marcas',
         'presentations' => 'Presentaciones',
+        'products' => 'Productos',
     ],
     'categories' => [
         'table' => 'Tabla Categorias',
@@ -45,7 +46,17 @@ return [
         'edit' => 'Editar Presentación',
         'updated_success' => 'Presentación actualizada exitosamente',
         'deleted_success' => 'Presentación eliminada exitosamente',
-        'restored_success' => 'Presentación restaurada exitosamente',
+        'restored_success' => '     Presentación restaurada exitosamente',
+    ],
+    'products' => [
+        'table' => 'Tabla Productos',
+        'create' => 'Crear Producto',
+        'created_success' => 'Producto creado exitosamente',
+        'create_error' => 'El Producto no pudo ser creado',
+        'edit' => 'Editar Producto',
+        'updated_success' => 'Producto actualizado exitosamente',
+        'deleted_success' => 'Producto eliminado exitosamente',
+        'restored_success' => 'Producto restaurado exitosamente',
     ],
     'buttons' => [
         'search' => 'Buscar...',
@@ -65,6 +76,18 @@ return [
         'fields' => [
             'name' => 'Nombre',
             'description' => 'Descripción',
+            'code' => 'Código',
+            'expiry_date' => 'Fecha de vencimiento',
+            'img_path' => 'Imagen',
+            'brand' => 'Marca',
+            'presentation' => 'Presentación',
+            'option' => [
+                'select_one' => 'Por favor seleccione uno opción',
+            ],
+            'categories' => 'Categorias',
+            'required' => [
+                'code' => 'El código es necesario',
+            ],
         ],
         'results'   => [
             'success' => 'Operación exitosa',
