@@ -20,7 +20,7 @@
     @else
         <button
             type="button"
-            class="btn btn-success"
+            class="btn btn-primary"
             data-bs-toggle="modal"
             data-bs-target="#confirmModal-{{$value->id}}"
         >{{ __('messages.buttons.restore') }}</button>
