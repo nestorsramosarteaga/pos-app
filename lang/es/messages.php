@@ -46,7 +46,7 @@ return [
         'edit' => 'Editar Presentación',
         'updated_success' => 'Presentación actualizada exitosamente',
         'deleted_success' => 'Presentación eliminada exitosamente',
-        'restored_success' => '     Presentación restaurada exitosamente',
+        'restored_success' => 'Presentación restaurada exitosamente',
     ],
     'products' => [
         'table' => 'Tabla Productos',
@@ -55,6 +55,7 @@ return [
         'create_error' => 'El Producto no pudo ser creado',
         'edit' => 'Editar Producto',
         'updated_success' => 'Producto actualizado exitosamente',
+        'updated_error' => 'El Producto no pudo ser actualizado',
         'deleted_success' => 'Producto eliminado exitosamente',
         'restored_success' => 'Producto restaurado exitosamente',
     ],

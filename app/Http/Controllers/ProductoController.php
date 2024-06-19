@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoredProductRequest;
 use App\Models\Marca;
 use App\Models\Producto;
 use App\Models\Categoria;
@@ -12,6 +11,9 @@ use App\Models\Presentacione;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoredProductRequest;
+use App\Http\Requests\UpdatedProductRequest;
 
 class ProductoController extends Controller
 {
@@ -94,7 +96,7 @@ class ProductoController extends Controller
             return redirect()->route('productos.index')->with('success', __('messages.products.created_success'));
         }catch(\Exception $e){
             DB::rollBack();
-            Log::error('Error creating brand: ' . $e->getMessage());
+            Log::error('Error creating product: ' . $e->getMessage());
             // Redirect back with an error message
             return back()->with('error', __('messages.products.create_error'));
         }
@@ -111,17 +113,72 @@ class ProductoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Producto $producto) :View
     {
-        //
+        $marcas = Marca::join('caracteristicas as c', 'marcas.caracteristica_id', '=', 'c.id')
+        ->where('c.estado', 1)
+        ->select('marcas.id','c.nombre')
+        ->orderBy('c.nombre')
+        ->get();
+
+        $presentaciones = Presentacione::join('caracteristicas as c', 'presentaciones.caracteristica_id', '=', 'c.id')
+        ->where('c.estado', 1)
+        ->select('presentaciones.id', 'c.nombre')
+        ->orderBy('c.nombre')
+        ->get();
+
+        $categorias = Categoria::join('caracteristicas as c', 'categorias.caracteristica_id', '=', 'c.id')
+        ->where('c.estado', 1)
+        ->select('categorias.id', 'c.nombre')
+        ->orderBy('c.nombre')
+        ->get();
+
+        return view('producto.edit', compact('producto','marcas','presentaciones','categorias'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdatedProductRequest $request, Producto $producto) :RedirectResponse
     {
-        //
+        try {
+            DB::beginTransaction();
+
+            if($request->hasFile('img_path')){
+                $name = $producto->handleUploadImage($request->file('img_path'));
+                // Eliminar imagen antigua
+                if(Storage::disk('public')->exists('/productos/'.$producto->img_path)){
+                    Storage::disk('public')->delete('/productos/'.$producto->img_path);
+                }
+            } else {
+                $name = $producto->img_path;
+            }
+
+            $producto->fill([
+                'codigo' => $request->codigo,
+                'nombre' => $request->nombre,
+                'descripcion' => $request->descripcion,
+                'fecha_vencimiento' => $request->fecha_vencimiento,
+                'img_path' => $name,
+                'marca_id' => $request->marca_id,
+                'presentacione_id' => $request->presentacione_id
+            ]);
+
+            $producto->save();
+
+            // Fill categoria_producto table
+            $categorias = $request->get('categorias');
+            $producto->categorias()->sync($categorias);
+
+            DB::commit();
+
+            return redirect()->route('productos.index')->with('success', __('messages.products.created_success'));
+        } catch (\Exception $e){
+            DB::rollBack();
+            Log::error('Error updating product: ' . $e->getMessage());
+            // Redirect back with an error message
+            return back()->with('error', __('messages.products.updated_error'));
+        }
     }
 
     /**
