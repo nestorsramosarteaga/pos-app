@@ -9,8 +9,8 @@ use App\Models\Caracteristica;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\StoreMarcaRequest;
 use App\Http\Requests\UpdateMarcaRequest;
+use App\Http\Requests\StoreCategoriaRequest;
 
 class MarcaController extends Controller
 {
@@ -34,7 +34,7 @@ class MarcaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMarcaRequest $request) :RedirectResponse
+    public function store(StoreCategoriaRequest $request) :RedirectResponse
     {
         try{
             DB::beginTransaction();

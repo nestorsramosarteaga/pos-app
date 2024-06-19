@@ -9,7 +9,7 @@ use App\Models\Caracteristica;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\StorePresentacionRequest;
+use App\Http\Requests\StoreCategoriaRequest;
 use App\Http\Requests\UpdatePresentacionRequest;
 
 class PresentacionController extends Controller
@@ -34,7 +34,7 @@ class PresentacionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePresentacionRequest $request) :RedirectResponse
+    public function store(StoreCategoriaRequest $request) :RedirectResponse
     {
         try{
             DB::beginTransaction();
