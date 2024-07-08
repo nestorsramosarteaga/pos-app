@@ -17,6 +17,7 @@ return [
         'brands' => 'Marcas',
         'presentations' => 'Presentaciones',
         'products' => 'Productos',
+        'clients' => 'Clientes',
     ],
     'categories' => [
         'table' => 'Tabla Categorias',
@@ -58,6 +59,16 @@ return [
         'updated_error' => 'El Producto no pudo ser actualizado',
         'deleted_success' => 'Producto eliminado exitosamente',
         'restored_success' => 'Producto restaurado exitosamente',
+    ],
+    'clients' => [
+        'table' => 'Tabla Clientes',
+        'create' => 'Crear Cliente',
+        'created_success' => 'Caliente creado exitosamente',
+        'create_error' => 'El Cliente no pudo ser creado',
+        'edit' => 'Editar Cliente',
+        'updated_success' => 'Cliente actualizado exitosamente',
+        'deleted_success' => 'Cliente eliminado exitosamente',
+        'restored_success' => 'Cliente restaurado exitosamente',
     ],
     'buttons' => [
         'search' => 'Buscar...',

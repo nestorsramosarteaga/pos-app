@@ -56,7 +56,7 @@
                     {{ __('messages.menus.categories') }}
                 </a>
                 <a class="nav-link" href="{{ route('marcas.index') }}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-rainbow"></i></div>
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-bullhorn"></i></div>
                     {{ __('messages.menus.brands') }}
                 </a>
                 <a class="nav-link" href="{{ route('presentaciones.index') }}">
@@ -66,6 +66,10 @@
                 <a class="nav-link" href="{{ route('productos.index') }}">
                     <div class="sb-nav-link-icon"><i class="fa-brands fa-shopify"></i></div>
                     {{ __('messages.menus.products') }}
+                </a>
+                <a class="nav-link" href="{{ route('clientes.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
+                    {{ __('messages.menus.clients') }}
                 </a>
             </div>
         </div>

@@ -17,6 +17,7 @@ return [
         'brands' => 'Brands',
         'presentations' => 'Presentations',
         'products' => 'Products',
+        'clients' => 'Clients',
     ],
     'categories' => [
         'table' => 'DataTable Categories',
@@ -61,6 +62,17 @@ return [
         'updated_error' => 'The Product could not be updated',
         'deleted_success' => 'Product successfully deleted',
         'restored_success' => 'Product successfully restored',
+    ],
+    'clients' => [
+        'table' => 'DataTable Clients',
+        'create' => 'Create Client',
+        'created_success' => 'Client successfully created',
+        'create_error' => 'The Client could not be created',
+        'edit' => 'Edit Client',
+        'updated_success' => 'Client successfully updated',
+        'updated_error' => 'The Client could not be updated',
+        'deleted_success' => 'Client successfully deleted',
+        'restored_success' => 'Client successfully restored',
     ],
     'buttons' => [
         'search' => 'Search...',
