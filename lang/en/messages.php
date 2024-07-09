@@ -100,6 +100,8 @@ return [
             'presentation' => 'Presentation',
             'option' => [
                 'select_one' => 'Please select one option',
+                'natural_person' => 'Natural Persona',
+                'legal_person' => 'Legal Persona',
             ],
             'categories' => 'Categories',
             'required' => [
@@ -107,6 +109,13 @@ return [
             ],
             'none' => 'None',
             'stock' => 'Stock',
+            'client_type' => 'Type of client',
+            'full_name' => 'Full name',
+            'company_name' => 'Company name',
+            'address' => 'Address',
+            'document_type' => 'Document type',
+            'number_id' => 'ID number',
+            'document' => 'Document',
         ],
         'results'   => [
             'success' => 'successfully saved',
@@ -127,6 +136,9 @@ return [
         'confirmation_message_delete_product' => 'Are you sure you want to delete the product?',
         'confirmation_message_restore_product' => 'Are you sure you want to restore the product?',
         'title_product_details' => 'Product Details',
+        'confirmation_message_delete_client' => 'Are you sure you want to delete the client?',
+        'confirmation_message_restore_client' => 'Are you sure you want to restore the client?',
+        'title_client_details' => 'Client Details',
     ],
     'status' => [
         'active' => 'Active',

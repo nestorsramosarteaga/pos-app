@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\Persona;
+use App\Models\Documento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use App\Http\Requests\StorePersonaRequest;
+use App\Http\Requests\UpdateClienteRequest;
 
 class ClienteController extends Controller
 {
@@ -12,8 +18,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //$clientes = Cliente::with('caracteristica')->latest()->get();
-        return view('cliente.index');
+        $clientes = Cliente::with('persona.documento')->get();
+        return view('cliente.index', compact('clientes'));
     }
 
     /**
@@ -21,15 +27,30 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        $documentos = Documento::all();
+        return view('cliente.create', compact('documentos'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePersonaRequest $request)
     {
-        //
+        try {
+            DB::beginTransaction();
+            $persona = Persona::create($request->validated());
+            $persona->cliente()->create([
+                'persona_id' => $persona->id
+            ]);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            Log::error('Error creating client: ' . $e->getMessage());
+            // Redirect back with an error message
+            return back()->with('error', __('messages.clients.create_error'));
+        }
+
+        return redirect()->route('clientes.index')->with('success', __('messages.clients.created_success'));
     }
 
     /**
@@ -43,17 +64,33 @@ class ClienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Cliente $cliente)
     {
-        //
+        $cliente->load('persona.documento');
+        $documentos = Documento::all();
+        return view('cliente.edit', compact('cliente','documentos'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateClienteRequest $request, Cliente $cliente)
     {
-        //
+        try {
+            DB::beginTransaction();
+
+            Persona::where('id', $cliente->persona->id)
+                ->update($request->validated());
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Error updating client: ' . $e->getMessage());
+            // Redirect back with an error message
+            return back()->with('error', __('messages.clients.updated_error'));
+        }
+
+        return redirect()->route('clientes.index')->with('success', __('messages.clients.updated_success'));
     }
 
     /**
@@ -61,6 +98,18 @@ class ClienteController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $persona = Persona::find($id);
+        $nuevoEstado = $persona->estado == 1 ? 0 : 1;
+
+        $mensaje = $persona->estado == 1
+            ? __('messages.clients.deleted_success')
+            : __('messages.clients.restored_success');
+
+        Persona::where('id' , $persona->id)
+        ->update([
+            'estado' => $nuevoEstado
+        ]);
+
+        return redirect()->route('clientes.index')->with('success', $mensaje );
     }
 }

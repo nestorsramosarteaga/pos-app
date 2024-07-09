@@ -27,46 +27,56 @@
         </div>
         <div class="card-body">
             <table id="datatablesSimple" class="table table-striped">
-                {{-- <thead>
+                <thead>
                     <tr>
                         <th>{{ __('messages.forms.fields.name') }}</th>
-                        <th>{{ __('messages.forms.fields.description') }}</th>
+                        <th>{{ __('messages.forms.fields.address') }}</th>
+                        <th>{{ __('messages.forms.fields.document') }}</th>
+                        <th>{{ __('messages.forms.fields.client_type') }}</th>
                         <th>{{ __('messages.columns.status') }}</th>
                         <th>{{ __('messages.columns.actions') }}</th>
                     </tr>
-                </thead> --}}
-                {{-- <tbody>
-                    @foreach($categorias as $categoria)
+                </thead>
+                <tbody>
+                    @foreach($clientes as $item)
                         <tr>
                             <td>
-                                {{ $categoria->caracteristica->nombre }}
+                                {{ $item->persona->razon_social }}
                             </td>
                             <td>
-                                {{ $categoria->caracteristica->descripcion }}
+                                {{ $item->persona->direccion }}
                             </td>
                             <td>
-                                <x-columna-estado :estado="$categoria->caracteristica->estado" />
+                                <p class="fw-normal mb-1">{{ $item->persona->documento->tipo_documento }}</p>
+                                <p class="text-muted mb-0">{{ $item->persona->numero_documento}}</p>
+                            </td>
+                            <td>
+                                {{ $item->persona->tipo_persona}}
+                            </td>
+                            <td>
+                                <x-columna-estado :estado="$item->persona->estado" />
                             </td>
                             <td class="text-center">
                                 <x-columna-acciones
                                     :ruta="'clientes.edit'"
-                                    :estado="$categoria->caracteristica->estado"
-                                    :key="'categoria'"
-                                    :value="$categoria"
+                                    :estado="$item->persona->estado"
+                                    :key="'cliente'"
+                                    :value="$item"
                                 />
                             </td>
                         </tr>
 
                         <!-- Confirm Modal -->
                         <x-confirm-modal
+                            :id="$item->id"
                             :ruta="'clientes.destroy'"
-                            :estado="$categoria->caracteristica->estado"
-                            :key="'categoria'"
-                            :id="$categoria->id"
-                            :type="'category'"
+                            :estado="$item->persona->estado"
+                            :key="'cliente'"
+                            :value="$item->persona_id"
+                            :type="'client'"
                         />
                     @endforeach
-                </tbody> --}}
+                </tbody>
             </table>
         </div>
     </div>

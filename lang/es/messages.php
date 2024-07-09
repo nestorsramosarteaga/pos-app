@@ -63,7 +63,7 @@ return [
     'clients' => [
         'table' => 'Tabla Clientes',
         'create' => 'Crear Cliente',
-        'created_success' => 'Caliente creado exitosamente',
+        'created_success' => 'Cliente creado exitosamente',
         'create_error' => 'El Cliente no pudo ser creado',
         'edit' => 'Editar Cliente',
         'updated_success' => 'Cliente actualizado exitosamente',
@@ -95,13 +95,23 @@ return [
             'brand' => 'Marca',
             'presentation' => 'Presentación',
             'option' => [
-                'select_one' => 'Por favor seleccione uno opción',
+                'select_one' => 'Por favor seleccione una opción',
+                'natural_person' => 'Persona natural',
+                'legal_person' => 'Persona jurídica',
             ],
             'categories' => 'Categorias',
             'required' => [
                 'code' => 'El código es necesario',
             ],
             'none' => 'No tiene',
+            'stock' => 'Stock',
+            'client_type' => 'Tipo de cliente',
+            'full_name' => 'Nombres y Apellidos',
+            'company_name' => 'Razón Social',
+            'address' => 'Dirección',
+            'document_type' => 'Tipo de documento',
+            'number_id' => 'Número de documento',
+            'document' => 'Documento',
         ],
         'results'   => [
             'success' => 'Operación exitosa',
@@ -122,6 +132,9 @@ return [
         'confirmation_message_delete_product' => '¿Seguro que quieres eliminar el producto?',
         'confirmation_message_restore_product' => '¿Seguro que quieres restaurar el producto?',
         'title_product_details' => 'Detalles del Producto',
+        'confirmation_message_delete_client' => '¿Seguro que quieres eliminar el cliente?',
+        'confirmation_message_restore_client' => '¿Seguro que quieres restaurar el cliente?',
+        'title_client_details' => 'Detalles del Cliente',
     ],
     'status' => [
         'active' => 'Activo',
