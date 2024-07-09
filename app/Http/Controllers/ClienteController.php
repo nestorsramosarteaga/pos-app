@@ -45,7 +45,7 @@ class ClienteController extends Controller
 
             DB::commit();
         } catch (\Exception $e) {
-            Log::error('Error creating client: ' . $e->getMessage());
+            Log::error('Error creating customer: ' . $e->getMessage());
             // Redirect back with an error message
             return back()->with('error', __('messages.customers.create_error'));
         }
@@ -85,7 +85,7 @@ class ClienteController extends Controller
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
-            Log::error('Error updating client: ' . $e->getMessage());
+            Log::error('Error updating customer: ' . $e->getMessage());
             // Redirect back with an error message
             return back()->with('error', __('messages.customers.updated_error'));
         }
