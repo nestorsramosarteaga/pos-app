@@ -117,10 +117,11 @@
 
                     <!-- Confirm Modal -->
                     <x-confirm-modal
+                        :id="$item->id"
                         :ruta="'productos.destroy'"
                         :estado="$item->estado"
                         :key="'producto'"
-                        :id="$item->id"
+                        :value="$item->id"
                         :type="'product'"
                     />
                     @endforeach

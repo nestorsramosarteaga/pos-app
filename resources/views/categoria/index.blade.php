@@ -36,23 +36,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($categorias as $categoria)
+                    @foreach($categorias as $item)
                         <tr>
                             <td>
-                                {{ $categoria->caracteristica->nombre }}
+                                {{ $item->caracteristica->nombre }}
                             </td>
                             <td>
-                                {{ $categoria->caracteristica->descripcion }}
+                                {{ $item->caracteristica->descripcion }}
                             </td>
                             <td>
-                                <x-columna-estado :estado="$categoria->caracteristica->estado" />
+                                <x-columna-estado :estado="$item->caracteristica->estado" />
                             </td>
                             <td class="text-center">
                                 <x-columna-acciones
                                     :ruta="'categorias.edit'"
-                                    :estado="$categoria->caracteristica->estado"
+                                    :estado="$item->caracteristica->estado"
                                     :key="'categoria'"
-                                    :value="$categoria"
+                                    :value="$item"
                                 />
                             </td>
                         </tr>
@@ -60,9 +60,10 @@
                         <!-- Confirm Modal -->
                         <x-confirm-modal
                             :ruta="'categorias.destroy'"
-                            :estado="$categoria->caracteristica->estado"
+                            :estado="$item->caracteristica->estado"
                             :key="'categoria'"
-                            :id="$categoria->id"
+                            :id="$item->id"
+                            :value="$item->id"
                             :type="'category'"
                         />
                     @endforeach

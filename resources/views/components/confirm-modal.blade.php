@@ -11,7 +11,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('messages.buttons.close') }}</button>
 
-                <form action="{{ route($ruta,[$key=>$id]) }}" method="post">
+                <form action="{{ route($ruta,[ $key => $value ]) }}" method="post">
                     @method('DELETE')
                     @csrf
                     <button type="submit" class="btn btn-danger">{{ __('messages.buttons.confirm') }}</button>

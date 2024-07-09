@@ -36,33 +36,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($presentaciones as $presentacione)
+                    @foreach($presentaciones as $item)
                         <tr>
                             <td>
-                                {{ $presentacione->caracteristica->nombre }}
+                                {{ $item->caracteristica->nombre }}
                             </td>
                             <td>
-                                {{ $presentacione->caracteristica->descripcion }}
+                                {{ $item->caracteristica->descripcion }}
                             </td>
                             <td>
-                                <x-columna-estado :estado="$presentacione->caracteristica->estado" />
+                                <x-columna-estado :estado="$item->caracteristica->estado" />
                             </td>
                             <td class="text-center">
                                 <x-columna-acciones
                                     :ruta="'presentaciones.edit'"
-                                    :estado="$presentacione->caracteristica->estado"
+                                    :estado="$item->caracteristica->estado"
                                     :key="'presentacione'"
-                                    :value="$presentacione"
+                                    :value="$item"
                                 />
                             </td>
                         </tr>
 
                         <!-- Confirm Modal -->
                         <x-confirm-modal
+                            :id="$item->id"
                             :ruta="'presentaciones.destroy'"
-                            :estado="$presentacione->caracteristica->estado"
+                            :estado="$item->caracteristica->estado"
                             :key="'presentacione'"
-                            :id="$presentacione->id"
+                            :value="$item->id"
                             :type="'presentation'"
                         />
                     @endforeach

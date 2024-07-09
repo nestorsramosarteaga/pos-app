@@ -13,16 +13,18 @@ class ConfirmModal extends Component
     public $key;
     public $id;
     public $type;
+    public $value;
     /**
      * Create a new component instance.
      */
-    public function __construct($ruta, $estado, $key, $id, $type)
+    public function __construct($ruta, $estado, $key, $id, $type, $value)
     {
         $this->ruta = $ruta;
         $this->estado = $estado;
         $this->key = $key;
         $this->id = $id;
         $this->type = $type;
+        $this->value = $value;
     }
 
     /**

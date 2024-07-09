@@ -36,33 +36,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($marcas as $marca)
+                    @foreach($marcas as $item)
                         <tr>
                             <td>
-                                {{ $marca->caracteristica->nombre }}
+                                {{ $item->caracteristica->nombre }}
                             </td>
                             <td>
-                                {{ $marca->caracteristica->descripcion }}
+                                {{ $item->caracteristica->descripcion }}
                             </td>
                             <td>
-                                <x-columna-estado :estado="$marca->caracteristica->estado" />
+                                <x-columna-estado :estado="$item->caracteristica->estado" />
                             </td>
                             <td class="text-center">
                                 <x-columna-acciones
                                     :ruta="'marcas.edit'"
-                                    :estado="$marca->caracteristica->estado"
+                                    :estado="$item->caracteristica->estado"
                                     :key="'marca'"
-                                    :value="$marca"
+                                    :value="$item"
                                 />
                             </td>
                         </tr>
 
                         <!-- Confirm Modal -->
                         <x-confirm-modal
+                            :id="$item->id"
                             :ruta="'marcas.destroy'"
-                            :estado="$marca->caracteristica->estado"
+                            :estado="$item->caracteristica->estado"
                             :key="'marca'"
-                            :id="$marca->id"
+                            :value="$item->id"
                             :type="'brand'"
                         />
                     @endforeach
