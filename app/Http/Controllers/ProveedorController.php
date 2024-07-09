@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Requests\StorePersonaRequest;
+use App\Http\Requests\UpdateProveedorRequest;
 
 class ProveedorController extends Controller
 {
@@ -63,19 +64,33 @@ class ProveedorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Proveedore $proveedor)
+    public function edit(Proveedore $proveedore)
     {
-        $proveedor->load('persona.documento');
+        $proveedore->load('persona.documento');
         $documentos = Documento::all();
-        dd($proveedor,$documentos);
+        return view('proveedor.edit', compact('proveedore','documentos'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateProveedorRequest $request, Proveedore $proveedore)
     {
-        //
+        try {
+            DB::beginTransaction();
+
+            Persona::where('id', $proveedore->persona->id)
+                ->update($request->validated());
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Error updating supplier: ' . $e->getMessage());
+            // Redirect back with an error message
+            return back()->with('error', __('messages.suppliers.updated_error'));
+        }
+
+        return redirect()->route('proveedores.index')->with('success', __('messages.suppliers.updated_success'));
     }
 
     /**
