@@ -18,6 +18,7 @@ return [
         'presentations' => 'Presentations',
         'products' => 'Products',
         'customers' => 'Customers',
+        'suppliers' => 'Suppliers',
     ],
     'categories' => [
         'table' => 'DataTable Categories',
@@ -73,6 +74,17 @@ return [
         'updated_error' => 'The Customer could not be updated',
         'deleted_success' => 'Customer successfully deleted',
         'restored_success' => 'Customer successfully restored',
+    ],
+    'suppliers' => [
+        'table' => 'DataTable Suppliers',
+        'create' => 'Create Supplier',
+        'created_success' => 'Supplier successfully created',
+        'create_error' => 'The Supplier could not be created',
+        'edit' => 'Edit Supplier',
+        'updated_success' => 'Supplier successfully updated',
+        'updated_error' => 'The Supplier could not be updated',
+        'deleted_success' => 'Supplier successfully deleted',
+        'restored_success' => 'Supplier successfully restored',
     ],
     'buttons' => [
         'search' => 'Search...',
@@ -138,6 +150,8 @@ return [
         'title_product_details' => 'Product Details',
         'confirmation_message_delete_customer' => 'Are you sure you want to delete the customer?',
         'confirmation_message_restore_customer' => 'Are you sure you want to restore the customer?',
+        'confirmation_message_delete_supplier' => 'Are you sure you want to delete the supplier?',
+        'confirmation_message_restore_supplier' => 'Are you sure you want to restore the supplier?',
     ],
     'status' => [
         'active' => 'Active',
