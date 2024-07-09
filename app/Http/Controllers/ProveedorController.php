@@ -98,6 +98,18 @@ class ProveedorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $persona = Persona::find($id);
+        $nuevoEstado = $persona->estado == 1 ? 0 : 1;
+
+        $mensaje = $persona->estado == 1
+            ? __('messages.suppliers.deleted_success')
+            : __('messages.suppliers.restored_success');
+
+        Persona::where('id' , $persona->id)
+        ->update([
+            'estado' => $nuevoEstado
+        ]);
+
+        return redirect()->route('proveedores.index')->with('success', $mensaje );
     }
 }
