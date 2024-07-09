@@ -60,7 +60,7 @@
                                 <x-columna-acciones
                                     :ruta="'proveedores.edit'"
                                     :estado="$item->persona->estado"
-                                    :key="'proveedor'"
+                                    :key="'proveedore'"
                                     :value="$item"
                                 />
                             </td>
@@ -71,7 +71,7 @@
                             :id="$item->id"
                             :ruta="'proveedores.destroy'"
                             :estado="$item->persona->estado"
-                            :key="'proveedor'"
+                            :key="'proveedore'"
                             :value="$item->persona_id"
                             :type="'supplier'"
                         />
