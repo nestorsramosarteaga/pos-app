@@ -71,6 +71,10 @@
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
                     {{ __('messages.menus.customers') }}
                 </a>
+                <a class="nav-link" href="{{ route('proveedores.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-truck-field"></i></div>
+                    {{ __('messages.menus.suppliers') }}
+                </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">
