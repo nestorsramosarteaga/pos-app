@@ -69,7 +69,7 @@
                 </a>
                 <a class="nav-link" href="{{ route('clientes.index') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
-                    {{ __('messages.menus.clients') }}
+                    {{ __('messages.menus.customers') }}
                 </a>
             </div>
         </div>

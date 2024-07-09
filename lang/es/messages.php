@@ -17,7 +17,7 @@ return [
         'brands' => 'Marcas',
         'presentations' => 'Presentaciones',
         'products' => 'Productos',
-        'clients' => 'Clientes',
+        'customers' => 'Clientes',
     ],
     'categories' => [
         'table' => 'Tabla Categorias',
@@ -60,7 +60,7 @@ return [
         'deleted_success' => 'Producto eliminado exitosamente',
         'restored_success' => 'Producto restaurado exitosamente',
     ],
-    'clients' => [
+    'customers' => [
         'table' => 'Tabla Clientes',
         'create' => 'Crear Cliente',
         'created_success' => 'Cliente creado exitosamente',
@@ -132,9 +132,8 @@ return [
         'confirmation_message_delete_product' => '¿Seguro que quieres eliminar el producto?',
         'confirmation_message_restore_product' => '¿Seguro que quieres restaurar el producto?',
         'title_product_details' => 'Detalles del Producto',
-        'confirmation_message_delete_client' => '¿Seguro que quieres eliminar el cliente?',
-        'confirmation_message_restore_client' => '¿Seguro que quieres restaurar el cliente?',
-        'title_client_details' => 'Detalles del Cliente',
+        'confirmation_message_delete_customer' => '¿Seguro que quieres eliminar el cliente?',
+        'confirmation_message_restore_customer' => '¿Seguro que quieres restaurar el cliente?',
     ],
     'status' => [
         'active' => 'Activo',

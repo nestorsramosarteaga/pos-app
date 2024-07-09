@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', __('messages.clients.create'))
+@section('title', __('messages.customers.create'))
 
 @push('css')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
@@ -13,11 +13,11 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">{{ __('messages.clients.create') }}</h1>
+    <h1 class="mt-4">{{ __('messages.customers.create') }}</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="{{ route('panel') }}">{{ __('messages.menus.core') }}</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('clientes.index') }}">{{ __('messages.menus.clients') }}</a></li>
-        <li class="breadcrumb-item active">{{ __('messages.clients.create') }}</li>
+        <li class="breadcrumb-item"><a href="{{ route('clientes.index') }}">{{ __('messages.menus.customers') }}</a></li>
+        <li class="breadcrumb-item active">{{ __('messages.customers.create') }}</li>
     </ol>
 
     <!-- Add Form -->

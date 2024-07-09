@@ -1,17 +1,17 @@
 @extends('template')
 
-@section('title', __('messages.clients.edit'))
+@section('title', __('messages.customers.edit'))
 
 @push('css')
 @endpush
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">{{ __('messages.clients.edit') }}</h1>
+    <h1 class="mt-4">{{ __('messages.customers.edit') }}</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="{{ route('panel') }}">{{ __('messages.menus.core') }}</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('clientes.index') }}">{{ __('messages.menus.clients') }}</a></li>
-        <li class="breadcrumb-item active">{{ __('messages.clients.edit') }}</li>
+        <li class="breadcrumb-item"><a href="{{ route('clientes.index') }}">{{ __('messages.menus.customers') }}</a></li>
+        <li class="breadcrumb-item active">{{ __('messages.customers.edit') }}</li>
     </ol>
 
     <!-- Add Form -->

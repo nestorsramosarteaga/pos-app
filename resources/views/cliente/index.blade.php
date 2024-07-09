@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', __('messages.menus.clients'))
+@section('title', __('messages.menus.customers'))
 
 @push('css')
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
@@ -8,10 +8,10 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">{{ __('messages.menus.clients') }}</h1>
+    <h1 class="mt-4">{{ __('messages.menus.customers') }}</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="{{ route('panel') }}">{{ __('messages.menus.core') }}</a></li>
-        <li class="breadcrumb-item active">{{ __('messages.menus.clients') }}</li>
+        <li class="breadcrumb-item active">{{ __('messages.menus.customers') }}</li>
     </ol>
 
     <div class="mb-4">
@@ -23,7 +23,7 @@
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
-            {{ __('messages.clients.table') }}
+            {{ __('messages.customers.table') }}
         </div>
         <div class="card-body">
             <table id="datatablesSimple" class="table table-striped">
@@ -73,7 +73,7 @@
                             :estado="$item->persona->estado"
                             :key="'cliente'"
                             :value="$item->persona_id"
-                            :type="'client'"
+                            :type="'customer'"
                         />
                     @endforeach
                 </tbody>

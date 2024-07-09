@@ -47,10 +47,10 @@ class ClienteController extends Controller
         } catch (\Exception $e) {
             Log::error('Error creating client: ' . $e->getMessage());
             // Redirect back with an error message
-            return back()->with('error', __('messages.clients.create_error'));
+            return back()->with('error', __('messages.customers.create_error'));
         }
 
-        return redirect()->route('clientes.index')->with('success', __('messages.clients.created_success'));
+        return redirect()->route('clientes.index')->with('success', __('messages.customers.created_success'));
     }
 
     /**
@@ -87,10 +87,10 @@ class ClienteController extends Controller
             DB::rollBack();
             Log::error('Error updating client: ' . $e->getMessage());
             // Redirect back with an error message
-            return back()->with('error', __('messages.clients.updated_error'));
+            return back()->with('error', __('messages.customers.updated_error'));
         }
 
-        return redirect()->route('clientes.index')->with('success', __('messages.clients.updated_success'));
+        return redirect()->route('clientes.index')->with('success', __('messages.customers.updated_success'));
     }
 
     /**
@@ -102,8 +102,8 @@ class ClienteController extends Controller
         $nuevoEstado = $persona->estado == 1 ? 0 : 1;
 
         $mensaje = $persona->estado == 1
-            ? __('messages.clients.deleted_success')
-            : __('messages.clients.restored_success');
+            ? __('messages.customers.deleted_success')
+            : __('messages.customers.restored_success');
 
         Persona::where('id' , $persona->id)
         ->update([
