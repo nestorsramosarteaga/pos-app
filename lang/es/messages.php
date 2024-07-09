@@ -18,6 +18,7 @@ return [
         'presentations' => 'Presentaciones',
         'products' => 'Productos',
         'customers' => 'Clientes',
+        'suppliers' => 'Proveedores',
     ],
     'categories' => [
         'table' => 'Tabla Categorias',
@@ -69,6 +70,16 @@ return [
         'updated_success' => 'Cliente actualizado exitosamente',
         'deleted_success' => 'Cliente eliminado exitosamente',
         'restored_success' => 'Cliente restaurado exitosamente',
+    ],
+    'suppliers' => [
+        'table' => 'Tabla Proveedores',
+        'create' => 'Crear Proveedor',
+        'created_success' => 'Proveedor creado exitosamente',
+        'create_error' => 'El Proveedor no pudo ser creado',
+        'edit' => 'Editar Proveedor',
+        'updated_success' => 'Proveedor actualizado exitosamente',
+        'deleted_success' => 'Proveedor eliminado exitosamente',
+        'restored_success' => 'Proveedor restaurado exitosamente',
     ],
     'buttons' => [
         'search' => 'Buscar...',
@@ -134,6 +145,8 @@ return [
         'title_product_details' => 'Detalles del Producto',
         'confirmation_message_delete_customer' => '¿Seguro que quieres eliminar el cliente?',
         'confirmation_message_restore_customer' => '¿Seguro que quieres restaurar el cliente?',
+        'confirmation_message_delete_supplier' => '¿Seguro que quieres eliminar el proveedor?',
+        'confirmation_message_restore_supplier' => '¿Seguro que quieres restaurar el proveedor?',
     ],
     'status' => [
         'active' => 'Activo',
