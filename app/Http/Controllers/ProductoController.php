@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoredProductRequest;
-use App\Http\Requests\UpdatedProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 
 class ProductoController extends Controller
 {
@@ -139,7 +139,7 @@ class ProductoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatedProductRequest $request, Producto $producto) :RedirectResponse
+    public function update(UpdateProductRequest $request, Producto $producto) :RedirectResponse
     {
         try {
             DB::beginTransaction();
