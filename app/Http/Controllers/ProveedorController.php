@@ -45,6 +45,7 @@ class ProveedorController extends Controller
 
             DB::commit();
         } catch (\Exception $e) {
+            DB::rollBack();
             Log::error('Error creating supplier: ' . $e->getMessage());
             // Redirect back with an error message
             return back()->with('error', __('messages.suppliers.create_error'));

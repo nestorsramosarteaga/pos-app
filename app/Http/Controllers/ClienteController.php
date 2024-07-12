@@ -45,6 +45,7 @@ class ClienteController extends Controller
 
             DB::commit();
         } catch (\Exception $e) {
+            DB::rollBack();
             Log::error('Error creating customer: ' . $e->getMessage());
             // Redirect back with an error message
             return back()->with('error', __('messages.customers.create_error'));
