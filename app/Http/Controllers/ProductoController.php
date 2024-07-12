@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\StoredProductRequest;
+use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 
 class ProductoController extends Controller
@@ -39,14 +39,12 @@ class ProductoController extends Controller
         ->where('c.estado', 1)
         ->select('marcas.id','c.nombre')
         ->orderBy('c.nombre')
-        //->with('caracteristica')
         ->get();
 
         $presentaciones = Presentacione::join('caracteristicas as c', 'presentaciones.caracteristica_id', '=', 'c.id')
         ->where('c.estado', 1)
         ->select('presentaciones.id', 'c.nombre')
         ->orderBy('c.nombre')
-        //->with('caracteristica')
         ->get();
 
         $categorias = Categoria::join('caracteristicas as c', 'categorias.caracteristica_id', '=', 'c.id')
@@ -62,7 +60,7 @@ class ProductoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoredProductRequest $request) :RedirectResponse
+    public function store(StoreProductRequest $request) :RedirectResponse
     {
         try{
             DB::beginTransaction();

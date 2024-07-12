@@ -12,6 +12,16 @@ class Producto extends Model
 
     protected $fillable = [ 'codigo', 'nombre', 'descripcion', 'fecha_vencimiento', 'marca_id', 'presentacione_id', 'img_path'];
 
+    /**
+     * Get only active products (estado = 1).
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public static function active()
+    {
+        return self::where('estado', 1)->get();
+    }
+
     public function compras(){
         return $this->belongsToMany(Compra::class)->withTimestamps()
             ->withPivot('cantidad','precio_compra','precio_venta');
