@@ -34,6 +34,10 @@ const langJson = {
     fr: 'js/fr.json'
 };
 
+const tax = 18;
+
+const locale_currency = 'COP';
+
 async function loadTranslations(lang) {
     try {
         let response = await fetch(langJson[lang]);
@@ -64,3 +68,44 @@ async function initializeDataTable(datatablesSimple) {
     }
 }
 
+function round(num, decimales = 2) {
+    var signo = (num >= 0 ? 1 : -1);
+    num = num * signo;
+    if (decimales === 0) //con 0 decimales
+        return signo * Math.round(num);
+    // round(x * 10 ^ decimales)
+    num = num.toString().split('e');
+    num = Math.round(+(num[0] + 'e' + (num[1] ? (+num[1] + decimales) : decimales)));
+    // x * 10 ^ (-decimales)
+    num = num.toString().split('e');
+    return signo * (num[0] + 'e' + (num[1] ? (+num[1] - decimales) : -decimales));
+}
+// Source: https://es.stackoverflow.com/questions/48958/redondear-a-dos-decimales-cuando-sea-necesario
+
+
+function showTostModal(message, icon = 'error') {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+    Toast.fire({
+        icon: icon,
+        title: message
+    });
+}
+
+function currencyFormatter({ currency, value}) {
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        minimumFractionDigits: 2,
+        currency
+    })
+    return formatter.format(value)
+}

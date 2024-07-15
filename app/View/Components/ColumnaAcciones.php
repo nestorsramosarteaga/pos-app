@@ -13,16 +13,19 @@ class ColumnaAcciones extends Component
     public $key;
     public $value;
     public $botonVer;
+
+    public $botonEdit;
     /**
      * Create a new component instance.
      */
-    public function __construct($ruta, $estado, $key, $value, $botonVer=0)
+    public function __construct($ruta, $estado, $key, $value, $botonVer=0, $botonEdit=1)
     {
         $this->ruta = $ruta;
         $this->estado = $estado;
         $this->key = $key;
         $this->value = $value;
         $this->botonVer = $botonVer;
+        $this->botonEdit = $botonEdit;
     }
 
     /**
